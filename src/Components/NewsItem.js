@@ -7,11 +7,11 @@ function NewsItem(props) {
     } = props;
     return (
         <div className="col">
-            <div className="card my-3">
+            <div className="card my-3 shadow h-100 ">
                 <img src={props.imageURL}
-                    className="card-img-top" alt="news" />
+                    className="card-img-top shadow rounded-2" alt="news" />
                 <div className="card-body">
-                    <h5 className="card-title">{title}</h5>
+                    <h5 className="card-title py-3">{title}</h5>
                     <p className="w-100 fs-6 
                         text-body-secondary 
                         text-end">

@@ -1,6 +1,10 @@
 import { React, useState, useEffect } from "react";
 import NewsItem from "./NewsItem";
-import Image from "../Images/News1.png";
+import Image1 from "../Images/news2.png";
+import Image2 from "../Images/news3.png";
+import Image3 from "../Images/news4.png";
+import Image4 from "../Images/news5.png";
+import Image5 from "../Images/news6.png";
 import InfiniteScroll
     from "react-infinite-scroll-component";
 
@@ -32,6 +36,7 @@ function News(props) {
         let parsedData = await data.json();
         setArticles(articles.concat(parsedData.articles));
     };
+    const fallbackImages = [Image1, Image2, Image3, Image4, Image5];
 
     return (
         <InfiniteScroll
@@ -51,22 +56,24 @@ function News(props) {
                 </p>
             }
         >
-            <div className="container my-3">
+           <div className="container my-3">
                 <div className="row">
-                    {articles.map((element) => {
+                    {articles.map((element, index) => {
+                        // Select a fallback image based on the index
+                        const fallbackImage = fallbackImages[index % fallbackImages.length];
+
                         return (
-                            <div className="col-md-4" key={element.url}>
+                            <div className="col-md-4 d-flex my-3" key={element.url}>
                                 <NewsItem
                                     sourceName={element.source.name}
                                     title={element.title}
                                     desc={element.description}
-                                    imageURL={element.urlToImage ? element.urlToImage : Image}
+                                    imageURL={element.urlToImage || fallbackImage}
                                     newsUrl={element.url}
                                 />
                             </div>
                         );
                     })}
-
                 </div>
             </div>
         </InfiniteScroll>
