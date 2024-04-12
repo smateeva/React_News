@@ -40,7 +40,6 @@ function News(props) {
 
     return (
         <InfiniteScroll
-            //This is important field to render the next data
             dataLength={articles.length}
             next={fetchData}
             hasMore={
@@ -59,7 +58,6 @@ function News(props) {
            <div className="container my-3">
                 <div className="row">
                     {articles.map((element, index) => {
-                        // Select a fallback image based on the index
                         const fallbackImage = fallbackImages[index % fallbackImages.length];
 
                         return (

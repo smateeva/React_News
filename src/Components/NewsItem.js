@@ -29,5 +29,4 @@ function NewsItem(props) {
     );
 }
 
-
 export default NewsItem;
